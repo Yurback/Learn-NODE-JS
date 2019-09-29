@@ -15,7 +15,7 @@ const server = http.createServer((req, res) => {
         // res.writeHead(200, {
         //     "Content-Type": "text/html; charset=utf-8"
         // });
-        res.write('<head><title>Enter Message</title></head>');
+        res.write('<head><meta charset="UTF-8"><title>Enter Message</title></head>');
         res.write('<body><form action = "/message" method = "POST"><input type = "text" name="message"><button>Send</button></form></body>');
         res.write("</html>");
         return res.end();
@@ -28,17 +28,24 @@ const server = http.createServer((req, res) => {
             body.push(chunk);
         });
 
-        return req.on('end', () => {
-            // const parseBody =decodeURI(Buffer.concat(body).toString());  // Для декодирования русских букв
-            // const parseBody = decodeURIComponent(Buffer.concat(body).toString());  // Для декодирования русских букв и символов
-            const parseBody =Buffer.concat(body).toString(); // Без декодирования (англ.символы работают)
+        req.on('end', () => {
+            // const parseBody =decodeURI(Buffer.concat(body).toString());  // Для декодирования русских букв, <meta charset="UTF-8">
+            const parseBody = decodeURIComponent(Buffer.concat(body).toString());  // Для декодирования русских букв и символов, <meta charset="UTF-8">
+            // const parseBody =Buffer.concat(body).toString(); // Без декодирования (англ.символы работают)
+            console.log(parseBody);
             const msg = parseBody.split('=')[1];
-            fs.writeFile('message.txt', msg, err => {
-                res.statusCode = 302;
-                res.setHeader("Location", "/");
-                return res.end(); 
-            });
+            fs.writeFileSync('message.txt', msg);
+            //  err => {
+                // res.statusCode = 302;
+                // res.setHeader("Location", "/");
+                // return res.end(); 
+           
+             
         });
+        res.statusCode = 302;
+        res.setHeader("Location", "/");
+        return res.end();
+
     }
     res.setHeader('Content-Type', 'text/html');
     res.write('<html>');
