@@ -1,7 +1,7 @@
 {
-    "name": "module_6",
+    "name": "hw3",
     "version": "1.0.0",
-    "description": "3-d party Express.js",
+    "description": "build node+html+ссы",
     "main": "app.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,16 +11,17 @@
         "type": "git",
         "url": "git+https://github.com/Yurback/Learn-NODE-JS.git"
     },
+    "keywords": [
+        "Node"
+    ],
     "author": "Yurback",
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/Yurback/Learn-NODE-JS/issues"
     },
     "homepage": "https://github.com/Yurback/Learn-NODE-JS#readme",
-    "devDependencies": {
-        "nodemon": "^2.0.2"
-    },
     "dependencies": {
-        "express": "^4.17.1"
+        "express": "^4.17.1",
+        "nodemon": "^2.0.2"
     }
 }
