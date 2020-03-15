@@ -1,7 +1,1 @@
 node_modules
-
-#  // порядок установки NPM
-# 1. npm init в рабочем каталоге
-# 2. npm install nodemon --save-dev
-# 3. npm install express --save 
-# ЭТО делается для установке на проде
