@@ -1,0 +1,21 @@
+<%- include('includes/head.ejs')  %>
+
+    <link rel="stylesheet" href="/css/users.css">
+    </head>
+
+    <body>
+        <%- include('includes/navigation.ejs')  %>
+            <main>
+                <div class="listname">
+                    <ul class="listname_ul">
+                        <% for(let user of list) {%>
+                            <% if (user.name!='') { %>
+                                <li>
+                                    <%=user.name%>
+                                </li>
+                                <% } %>
+                                    <% } %>
+                    </ul>
+                </div>
+            </main>
+            <%- include('includes/footer.ejs') %>

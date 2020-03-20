@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.main-header {
+    width: 100%;
+    height: 3rem;
+    background: #00005e
+}
+
+.main-header__nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: blanchedalmond;
+    /* margin: 0 1rem; */
+}
+
+.main-header__ul {
+    padding: 1rem;
+    list-style: none;
+    display: flex;
+}
+
+.main-header__li {
+    margin-left: 1rem;
+}
+
+.main-header__li a {
+    text-decoration: none;
+    color: blanchedalmond;
+}
+
+.main-header__li:hover a {
+    color: firebrick;
+}
+
+.main-header__li a:active,
+.main-header__li a.active {
+    text-shadow: 0 0 0.6rem skyblue;
+    color: rgb(255, 61, 61);
+}
