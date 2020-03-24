@@ -17,15 +17,14 @@ app.set('views', 'views');
 
 const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
+const errController = require('./controllers/404.js');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/admin', adminData.routes);
+app.use('/admin', adminData);
 app.use(shopRoutes);
 
-app.use((req, res, next) => {
-    res.status(404).render('404', { doctitle: "Page not found" });
-});
+app.use(errController);
 
 app.listen(3000);
