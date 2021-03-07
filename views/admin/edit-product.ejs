@@ -8,7 +8,6 @@
 
     <main>
         <% if (errorMessage) { %>
-            
             <div class="user-message user-message--error"><%= errorMessage %></div>
         <% } %>
         <form class="product-form" action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>" method="POST">
