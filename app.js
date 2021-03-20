@@ -8,13 +8,15 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const csrf = require('csurf');
 const flash = require('connect-flash');
 const multer = require('multer');
+const helmet = require('helmet');
+const compression = require('compression');
 
 const errorController = require('./controllers/error');
 const User = require('./models/user');
 
 const MONGODB_URI =
-  'mongodb+srv://yuriy:ccLs1u3VFU7aBFK2@cluster0.gyckc.mongodb.net/shop';
-
+  `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.gyckc.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}`;
+ 
 const app = express();
 const store = new MongoDBStore({
   uri: MONGODB_URI,
@@ -28,12 +30,12 @@ const fileStorage = multer.diskStorage({
   }
   ,
   filename: (req,file,cb)=> {
-    cb(null, file.originalname + '-' + Date.now());
+    cb(null, Date.now() + '_' + file.originalname);
   }
 })
 
 const fileFilter = (req, file, cb) => {
-  if (file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg') {
+  if (file.mimetype === 'image/mp4' ||file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg') {
       cb(null, true);
   } else {
       cb(null, false);
@@ -46,6 +48,9 @@ app.set('views', 'views');
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const authRoutes = require('./routes/auth');
+
+// app.use(helmet());
+app.use(compression());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(multer({storage: fileStorage, fileFilter: fileFilter}).single('image'));
@@ -107,7 +112,7 @@ app.use(errorController.get404);
 mongoose
   .connect(MONGODB_URI)
   .then(result => {
-    app.listen(3000);
+    app.listen(process.env.PORT || 3000);
   })
   .catch(err => {
     console.log(err);

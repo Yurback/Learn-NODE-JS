@@ -12,16 +12,19 @@
 }
 
 .product__title {
+    padding: 0.5rem;
     font-size: 1.2rem;
     text-align: center;
+    color:#befffac4;
 }
 
 .product__price {
     text-align: center;
-    color: #4d4d4d;
+    color:rgb(214, 214, 214);
     margin-bottom: 0.5rem;
 }
 
 .product__description {
     text-align: center;
+    color:#a05757;
 }
