@@ -8,7 +8,7 @@
     "npm": "7.5.6"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "NODE_ENV=production MONGO_USER=yuriy MONGO_PASSWORD=ccLs1u3VFU7aBFK2 MONGO_DEFAULT_DATABASE=shop STRIPE_KEY=sk_test_51ITpxgBzGDWqKhStmD6KKBmVG9pnRszyjNszsy88gRyHNSr2pqzgsrSVXRN1RG1Ew41OuXLTeZ4xPafhpub43YXe00HZPdtE95",
     "start-server": "node app.js",
     "start:dev": "nodemon app.js"
@@ -16,6 +16,8 @@
   "author": "Yurback Design",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^2.3.0",
+    "mocha": "^8.3.2",
     "nodemon": "^1.18.3"
   },
   "dependencies": {
