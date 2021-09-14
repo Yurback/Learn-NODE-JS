@@ -15,16 +15,16 @@
     padding: 0.5rem;
     font-size: 1.2rem;
     text-align: center;
-    color:#befffac4;
+    color:#00695c;
 }
 
 .product__price {
     text-align: center;
-    color:rgb(214, 214, 214);
+    color: #68b6ad;
     margin-bottom: 0.5rem;
 }
 
 .product__description {
     text-align: center;
-    color:#a05757;
+    color:#bdb87b;
 }
